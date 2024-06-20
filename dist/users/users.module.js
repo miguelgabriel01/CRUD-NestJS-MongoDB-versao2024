@@ -6,23 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.UsersModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
+const users_service_1 = require("./users.service");
+const users_controller_1 = require("./users.controller");
+const user_entity_1 = require("./entities/user.entity");
 const mongoose_1 = require("@nestjs/mongoose");
-let AppModule = class AppModule {
+let UsersModule = class UsersModule {
 };
-exports.AppModule = AppModule;
-exports.AppModule = AppModule = __decorate([
+exports.UsersModule = UsersModule;
+exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://gabrielogabriel10:bolso22@cluster0.tytdwc2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'),
-            users_module_1.UsersModule,
+            mongoose_1.MongooseModule.forFeature([{ name: user_entity_1.User.name, schema: user_entity_1.UserSchema }]),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [users_controller_1.UsersController],
+        providers: [users_service_1.UsersService],
     })
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], UsersModule);
+//# sourceMappingURL=users.module.js.map
